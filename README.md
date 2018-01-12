@@ -25,4 +25,4 @@ This application was developed using Chrome 63.0.3239.132 running on macOS High 
 It has not been tested on other browsers or operating systems. Your milage may vary.
 
 ### Screenshot of current application
-![Banner mocked up](assets/screenshots/banner_mockup.png)
+![Table mockedup](assets/screenshots/table_mockup.png)
