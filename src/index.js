@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './index.css'
 
 class App extends React.Component {
   render () {
@@ -10,9 +11,9 @@ class App extends React.Component {
 class Banner extends React.Component {
   render () {
     return (
-      <div>
-        <h1>Hello World</h1>
-      </div>
+      <header>
+        <h1>Visa Calculator for Australians visiting Europe</h1>
+      </header>
     )
   }
 }
