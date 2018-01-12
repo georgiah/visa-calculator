@@ -7,7 +7,7 @@ import InputTable from './InputTable'
 class App extends React.Component {
   render () {
     return (
-      <container>
+      <container class="app">
         <Banner />
         <InputTable />
       </container>

@@ -1,0 +1,25 @@
+table {
+  margin-left: 10vw;
+  margin-top: 2rem;
+}
+
+td {
+  padding: 0.5rem 1rem;
+}
+
+button {
+  border: 0;
+  color: #9f6060;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+button:focus {
+  outline: 0;
+}
+
+input[type="date"], select, td {
+  font-family: Verdana;
+  font-size: 1.25rem;
+}
