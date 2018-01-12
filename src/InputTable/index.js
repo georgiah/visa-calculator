@@ -62,8 +62,10 @@ export default class InputTable extends React.Component {
             </td>
             <td>
               <select name="country-0"
+                defaultValue="Europe"
                 onChange={this.props.onChange}
               >
+                <option value="Europe" disabled>Europe</option>
                 {this.state.countries.map(country => {
                   return (
                     <option value={country} key={country}>
@@ -72,7 +74,7 @@ export default class InputTable extends React.Component {
                 })}
               </select>
             </td>
-            <td>XX of XX</td>
+            <td>{this.props.entries[0].days} of XX</td>
           </tr>
         </tbody>
       </table>
