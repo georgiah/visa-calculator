@@ -2,6 +2,37 @@ import React from 'react'
 import './index.css'
 
 export default class InputTable extends React.Component {
+  constructor (props) {
+    super(props)
+
+    // List of countries obtained from
+    // https://simple.wikipedia.org/wiki/List_of_European_countries
+    this.state = {
+      countries: [
+        'Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan',
+        'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
+        'Croatia', 'Cyprus', 'Czech Republic',
+        'Denmark',
+        'Estonia',
+        'Finland', 'France',
+        'Georgia', 'Germany', 'Greece',
+        'Hungary',
+        'Iceland', 'Ireland', 'Italy',
+        'Kosovo',
+        'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg',
+        'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro',
+        'Netherlands', 'Norway',
+        'Poland', 'Portugal',
+        'Romania', 'Russia',
+        'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain',
+        'Sweden', 'Switzerland',
+        'Turkey',
+        'Ukraine', 'United Kingdom',
+        'Vatican City'
+      ]
+    }
+  }
+
   render () {
     return (
       <table>
@@ -30,10 +61,15 @@ export default class InputTable extends React.Component {
               />
             </td>
             <td>
-              <select name="country">
-                <option value="Europe" defaultValue disabled>Europe</option>
-                <option value="Germany">Germany</option>
-                <option value="Italy">Italy</option>
+              <select name="country-0"
+                onChange={this.props.onChange}
+              >
+                {this.state.countries.map(country => {
+                  return (
+                    <option value={country} key={country}>
+                      {country}
+                    </option>)
+                })}
               </select>
             </td>
             <td>XX of XX</td>
