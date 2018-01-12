@@ -2,10 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Banner from './Banner'
+import InputTable from './InputTable'
 
 class App extends React.Component {
   render () {
-    return <Banner />
+    return (
+      <container>
+        <Banner />
+        <InputTable />
+      </container>
+    )
   }
 }
 
