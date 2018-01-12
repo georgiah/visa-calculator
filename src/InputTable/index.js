@@ -12,10 +12,22 @@ export default class InputTable extends React.Component {
           <th># Days</th>
         </tr>
         <tr>
-          <td>X</td>
-          <td>XX/XX/XXXX</td>
-          <td>XX/XX/XXXX</td>
-          <td>XXXXXX</td>
+          <td>
+            <button>X</button>
+          </td>
+          <td>
+            <input type="date" />
+          </td>
+          <td>
+            <input type="date" />
+          </td>
+          <td>
+            <select name="country">
+              <option value="Europe" selected disabled>Europe</option>
+              <option value="Germany">Germany</option>
+              <option value="Italy">Italy</option>
+            </select>
+          </td>
           <td>XX of XX</td>
         </tr>
       </table>
