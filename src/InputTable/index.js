@@ -33,7 +33,25 @@ export default class InputTable extends React.Component {
     }
   }
 
+  isFull = (entries) => {
+    const numEntries = entries.length
+    const lastEntry = entries[numEntries - 1]
+
+    if (numEntries === 0) {
+      return true
+    } else if (lastEntry.entry && lastEntry.exit && lastEntry.country) {
+      return true
+    }
+
+    return false
+  }
+
   render () {
+    const numEntries = this.props.entries.length
+    const lastRowEntry = `entry-${numEntries}`
+    const lastRowExit = `exit-${numEntries}`
+    const lastRowCountry = `country-${numEntries}`
+
     return (
       <table>
         <thead>
@@ -46,36 +64,79 @@ export default class InputTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <button>X</button>
-            </td>
-            <td>
-              <input type="date" name="entry-0"
-                onChange={this.props.onChange}
-              />
-            </td>
-            <td>
-              <input type="date" name="exit-0"
-                onChange={this.props.onChange}
-              />
-            </td>
-            <td>
-              <select name="country-0"
-                defaultValue="Europe"
-                onChange={this.props.onChange}
-              >
-                <option value="Europe" disabled>Europe</option>
-                {this.state.countries.map(country => {
-                  return (
-                    <option value={country} key={country}>
-                      {country}
-                    </option>)
-                })}
-              </select>
-            </td>
-            <td>{this.props.entries[0].days} of XX</td>
-          </tr>
+          {this.props.entries.map((entry, index) => {
+            const entryName = `entry-${index}`
+            const exitName = `exit-${index}`
+            const countryName = `country-${index}`
+            const rowId = `row-${index}`
+
+            return (
+              <tr key={rowId}>
+                <td>
+                  <button>X</button>
+                </td>
+                <td>
+                  <input type="date" name={entryName}
+                    value={entry.entry}
+                    onChange={this.props.onChange}
+                  />
+                </td>
+                <td>
+                  <input type="date" name={exitName}
+                    value={entry.exit}
+                    onChange={this.props.onChange}
+                  />
+                </td>
+                <td>
+                  <select name={countryName}
+                    value={entry.country}
+                    onChange={this.props.onChange}>
+                    {this.state.countries.map(country => {
+                      return (
+                        <option value={country} key={country}>
+                          {country}
+                        </option>)
+                    })}
+                  </select>
+                </td>
+                <td>{entry.days} of XX</td>
+              </tr>
+            )
+          })}
+          {this.isFull(this.props.entries) ? (
+            <tr>
+              <td>
+                <button>X</button>
+              </td>
+              <td>
+                <input type="date" name={lastRowEntry}
+                  value={this.props.newEntry.entry}
+                  onChange={this.props.onChange}
+                />
+              </td>
+              <td>
+                <input type="date" name={lastRowExit}
+                  value={this.props.newEntry.exit}
+                  onChange={this.props.onChange}
+                />
+              </td>
+              <td>
+                <select name={lastRowCountry}
+                  value={this.props.newEntry.country ?
+                    this.props.newEntry.country : "Europe"}
+                  onChange={this.props.onChange}
+                >
+                  <option value="Europe" disabled>Europe</option>
+                  {this.state.countries.map(country => {
+                    return (
+                      <option value={country} key={country}>
+                        {country}
+                      </option>)
+                  })}
+                </select>
+              </td>
+              <td></td>
+            </tr>) : null}
         </tbody>
       </table>
     )
