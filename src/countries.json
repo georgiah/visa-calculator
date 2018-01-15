@@ -1,66 +1,114 @@
 [
   {
+    "name": "Albania",
+    "length": 90
+  }, {
+    "name": "Andorra",
+    "length": 90
+  }, {
     "name": "Austria",
     "length": 90
-  },{
+  }, {
     "name": "Belgium",
     "length": 90
-  },{
+  }, {
+    "name": "Bosnia and Herzegovina",
+    "length": 90
+  }, {
+    "name": "Bulgaria",
+    "length": 90
+  }, {
+    "name": "Croatia",
+    "length": 90
+  }, {
+    "name": "Cyprus",
+    "length": 90
+  }, {
     "name": "Czech Republic",
     "length": 90
-  },{
+  }, {
     "name": "Denmark",
     "length": 90
-  },{
+  }, {
     "name": "Estonia",
     "length": 90
-  },{
+  }, {
     "name": "Finland",
     "length": 90
-  },{
+  }, {
     "name": "France",
     "length": 90
-  },{
+  }, {
+    "name": "Georgia",
+    "length": 365
+  }, {
     "name": "Germany",
     "length": 90
-  },{
+  }, {
     "name": "Greece",
     "length": 90
-  },{
+  }, {
     "name": "Hungary",
     "length": 90
   }, {
     "name": "Iceland",
     "length": 90
-  },{
+  }, {
+    "name": "Ireland",
+    "length": 90
+  }, {
     "name": "Italy",
     "length": 90
-  },{
+  }, {
+    "name": "Kosovo",
+    "length": 90
+  }, {
     "name": "Latvia",
     "length": 90
-  },{
+  }, {
     "name": "Liechtenstein",
     "length": 90
-  },{
+  }, {
     "name": "Lithuania",
     "length": 90
-  },{
+  }, {
     "name": "Luxembourg",
     "length": 90
-  },{
+  }, {
+    "name": "Macedonia",
+    "length": 90
+  }, {
     "name": "Malta",
     "length": 90
-  },{
+  }, {
+    "name": "Moldova",
+    "length": 90
+  }, {
+    "name": "Monaco",
+    "length": 90
+  }, {
+    "name": "Montenegro",
+    "length": 90
+  }, {
     "name": "Netherlands",
     "length": 90
-  },{
+  }, {
     "name": "Norway",
     "length": 90
-  },{
+  }, {
     "name": "Poland",
     "length": 90
   }, {
     "name": "Portugal",
+    "length": 90
+  }, {
+    "name": "Romania",
+    "length": 90
+  }, {
+    "name": "San Marino",
+    "length": 90
+  }, {
+    "name": "Serbia",
     "length": 90
   }, {
     "name": "Slovakia",
@@ -76,6 +124,12 @@
     "length": 90
   }, {
     "name": "Switzerland",
+    "length": 90
+  }, {
+    "name": "United Kingdom",
+    "length": 180
+  }, {
+    "name": "Vatican City",
     "length": 90
   }
 ]
