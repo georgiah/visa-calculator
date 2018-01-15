@@ -1,0 +1,6 @@
+td {  padding: 0.5rem 1rem;  }
+
+input[type="date"], select, td {
+  font-family: Verdana;
+  font-size: 1.25rem;
+}
