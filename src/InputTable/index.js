@@ -24,6 +24,7 @@ export default class InputTable extends React.Component {
                 <TableRow key={rowName}
                   onChange={this.props.onChange}
                   onClick={this.props.onRemovalClick}
+                  countries={this.props.countries}
                   entry={entry}
                   index={index} />
               )

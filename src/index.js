@@ -8,10 +8,12 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      countries: require('./countries.json'),
       entries: [{
         entry: '',
         exit: '',
-        country: ''
+        country: '',
+        days: 0
       }]
     }
   }
@@ -24,6 +26,17 @@ class App extends React.Component {
 
     entries[row][parameter] = e.target.value
 
+    if (parameter === 'country') {
+      const obj = this.state.countries.find((o) => {
+        if (o.name === e.target.value) {
+          return true
+        }
+        return false
+      })
+
+      entries[row].days = obj.length
+    }
+
     this.setState({
       entries: entries
     })
@@ -35,7 +48,8 @@ class App extends React.Component {
     entries.push({
       entry: '',
       exit: '',
-      country: ''
+      country: '',
+      days: 0
     })
 
     this.setState({
@@ -64,6 +78,7 @@ class App extends React.Component {
           onAdditionClick={(e) => this.handleAdditionClick(e)}
           onRemovalClick={(e) => this.handleRemovalClick(e)}
           entries={this.state.entries}
+          countries={this.state.countries.map(e => e.name)}
         />
       </div>
     )
