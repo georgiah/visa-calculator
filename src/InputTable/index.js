@@ -13,7 +13,7 @@ export default class InputTable extends React.Component {
               <th>Exit Date</th>
               <th>Country</th>
               <th># Days</th>
-              <th></th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -23,6 +23,7 @@ export default class InputTable extends React.Component {
               return (
                 <TableRow key={rowName}
                   onChange={this.props.onChange}
+                  onClick={this.props.onRemovalClick}
                   entry={entry}
                   index={index} />
               )
@@ -30,7 +31,7 @@ export default class InputTable extends React.Component {
           </tbody>
         </table>
         <div>
-          <button onClick={this.props.onClick}>Add new row</button>
+          <button onClick={this.props.onAdditionClick}>Add new row</button>
         </div>
       </section>
     )

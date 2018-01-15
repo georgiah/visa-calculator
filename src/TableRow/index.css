@@ -1,6 +1,19 @@
-td {  padding: 0.5rem 1rem;  }
+td {
+  padding: 0.5rem 1rem;
+}
 
 input[type="date"], select, td {
   font-family: Verdana;
   font-size: 1.25rem;
+}
+
+.delete {
+  border: 0;
+  color: #936c6c;
+  cursor: pointer;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: auto;
+  text-align: center;
 }

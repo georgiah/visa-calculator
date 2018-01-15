@@ -29,7 +29,7 @@ class App extends React.Component {
     })
   }
 
-  handleClick (e) {
+  handleAdditionClick (e) {
     var entries = this.state.entries
 
     entries.push({
@@ -43,13 +43,26 @@ class App extends React.Component {
     })
   }
 
+  handleRemovalClick (e) {
+    const name = e.target.name
+    const row = parseInt(name.substring(name.indexOf('-') + 1), 10)
+    var entries = this.state.entries
+
+    entries.splice(row, 1)
+
+    this.setState({
+      entries: entries
+    })
+  }
+
   render () {
     return (
       <div className="app">
         <Banner />
         <InputTable
           onChange={(e) => this.handleChange(e)}
-          onClick={(e) => this.handleClick(e)}
+          onAdditionClick={(e) => this.handleAdditionClick(e)}
+          onRemovalClick={(e) => this.handleRemovalClick(e)}
           entries={this.state.entries}
         />
       </div>

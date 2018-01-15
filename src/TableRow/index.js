@@ -52,6 +52,8 @@ export default class TableRow extends React.Component {
     const entryName = `entry-${index}`
     const exitName = `exit-${index}`
     const countryName = `country-${index}`
+    const buttonName = `delete-${index}`
+
     return (
       <tr>
         <td>
@@ -83,7 +85,14 @@ export default class TableRow extends React.Component {
           {this.fullEntry(entry) ?
             `${this.numDays(entry.entry, entry.exit)} of XX` : ''}
         </td>
-        <td></td>
+        <td>
+          {index ?
+            <button className="delete"
+              name={buttonName}
+              onClick={this.props.onClick}>
+              X
+            </button> : ''}
+        </td>
       </tr>
     )
   }

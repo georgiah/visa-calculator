@@ -4,6 +4,8 @@ section {
   justify-content: center;
 }
 
+th {  padding: 0.5rem 1rem;  }
+
 table {
   align-self: center;
   margin-top: 2rem;
@@ -14,7 +16,7 @@ div {  align-self: flex-end;  }
 button {
   border-radius: 5px;
   font-size: 1rem;
-  margin-left: 10vw;
+  margin-left: 2rem;
   padding: 0.25rem 0.75rem;
 }
 
