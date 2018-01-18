@@ -1,135 +1,179 @@
 [
   {
     "name": "Albania",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Andorra",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Austria",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Belgium",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Bosnia and Herzegovina",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Bulgaria",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Croatia",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Cyprus",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Czech Republic",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Denmark",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Estonia",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Finland",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "France",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Georgia",
-    "length": 365
+    "length": 365,
+    "zone": ""
   }, {
     "name": "Germany",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Greece",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Hungary",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Iceland",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Ireland",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Italy",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Kosovo",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Latvia",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Liechtenstein",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Lithuania",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Luxembourg",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Macedonia",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Malta",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Moldova",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Monaco",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Montenegro",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Netherlands",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Norway",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Poland",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Portugal",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Romania",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "San Marino",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Serbia",
-    "length": 90
+    "length": 90,
+    "zone": ""
   }, {
     "name": "Slovakia",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Slovenia",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Spain",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Sweden",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "Switzerland",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }, {
     "name": "United Kingdom",
-    "length": 180
+    "length": 180,
+    "zone": ""
   }, {
     "name": "Vatican City",
-    "length": 90
+    "length": 90,
+    "zone": "Schengen"
   }
 ]

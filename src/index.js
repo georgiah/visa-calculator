@@ -13,8 +13,14 @@ class App extends React.Component {
         entry: '',
         exit: '',
         country: '',
-        days: 0
-      }]
+        days: 0,
+        zone: ''
+      }],
+      schengen: require('./countries.json').filter(o =>
+        o.zone === 'Schengen').map(o => {
+          return o.name
+        }),
+      stays: []
     }
   }
 
@@ -35,11 +41,67 @@ class App extends React.Component {
       })
 
       entries[row].days = obj.length
+      entries[row].zone = obj.zone
     }
 
     this.setState({
       entries: entries
     })
+
+    this.calculateStays()
+  }
+
+  calculateStays () {
+    var stays = []
+    const entries = this.state.entries
+
+    for (let entry of entries) {
+      if (this.isFull(entry)) {
+        const zone = this.state.schengen.includes(entry.country) ?
+          'Schengen' : entry.country
+        const existingStay = stays.filter(function (stay) {
+          return stay.zone === zone
+        })[0]
+
+        if (existingStay) {
+          existingStay.entry.push(entry.entry)
+          existingStay.exit.push(entry.exit)
+        } else {
+          stays.push({
+            zone: zone,
+            entry: [entry.entry],
+            exit: [entry.exit]
+          })
+        }
+      }
+    }
+
+    for (let stay of stays) {
+      this.checkOverlap(stay)
+    }
+
+    this.setState({
+      stays: stays
+    })
+  }
+
+  isFull (entry) {
+    return (entry.entry && entry.exit && entry.country)
+  }
+
+  checkOverlap (stay) {
+    var entry = stay.entry
+    var exit = stay.exit
+
+    for (let i = 0; i < entry.length; i++) {
+      for (let j = 0; j < exit.length; j++) {
+        if (entry[i] === exit[j]) {
+          entry.splice(i, 1)
+          exit[j] = exit[i]
+          exit.splice(i, 1)
+        }
+      }
+    }
   }
 
   handleAdditionClick (e) {
