@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import Banner from './Banner'
 import InputTable from './InputTable'
+import TravelAdvice from './TravelAdvice'
 
 class App extends React.Component {
   constructor (props) {
@@ -129,6 +130,8 @@ class App extends React.Component {
     this.setState({
       entries: entries
     })
+
+    this.calculateStays()
   }
 
   render () {
@@ -142,6 +145,9 @@ class App extends React.Component {
           entries={this.state.entries}
           countries={this.state.countries.map(e => e.name)}
         />
+        <TravelAdvice
+          countries={this.state.countries}
+          stays={this.state.stays} />
       </div>
     )
   }

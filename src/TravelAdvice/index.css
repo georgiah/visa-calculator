@@ -1,0 +1,9 @@
+.advice {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.advice > div {
+  align-self: center;
+}
