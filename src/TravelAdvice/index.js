@@ -1,6 +1,7 @@
 import React from 'react'
 import Stay from '../Stay'
 import Error from '../Error'
+import NextTrip from '../NextTrip'
 import './index.css'
 
 export default class App extends React.Component {
@@ -65,19 +66,24 @@ export default class App extends React.Component {
           const entryDate = new Date(trip.entry)
           const exitDate = new Date(trip.exit)
           const timeDiff = Math.abs(exitDate.getTime() - entryDate.getTime())
-          trip.maxDays -= (Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1)
-
-
+          trip.length = (Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1)
+          trip.maxDays -= trip.length
           console.log(trip)
 
           return (
             <div key={stay.zone}>
               <h3>{stay.zone}</h3>
-              {trip.maxDays > 0 ? <Stay
-                key={trip.entry}
-                exit={trip.exit}
-                maxDays={trip.maxDays} /> : null}
+              {trip.maxDays > 0 ?
+                <Stay
+                  exit={trip.exit}
+                  maxDays={trip.maxDays} />
+                : null}
               {trip.maxDays < 0 ? <Error /> : null}
+              {trip.maxDays >=0 ?
+                <NextTrip
+                  exit={trip.exit}
+                  maxDays={maxDays}/>
+                  : null}
             </div>
           )
         })}
