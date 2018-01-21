@@ -65,44 +65,61 @@ class App extends React.Component {
         })[0]
 
         if (existingStay) {
-          existingStay.entry.push(entry.entry)
-          existingStay.exit.push(entry.exit)
+          existingStay.entries.push({
+            entry: entry.entry,
+            exit: entry.exit
+          })
         } else {
           stays.push({
             zone: zone,
-            entry: [entry.entry],
-            exit: [entry.exit]
+            entries: [{
+              entry: entry.entry,
+              exit: entry.exit
+            }]
           })
         }
       }
     }
 
     for (let stay of stays) {
-      this.checkOverlap(stay)
+      this.calculateDays(stay)
     }
+
+    stays = this.sortStays(stays)
 
     this.setState({
       stays: stays
     })
   }
 
-  isFull (entry) {
-    return (entry.entry && entry.exit && entry.country)
+  calculateDays (stay) {
+    for (let visit of stay.entries) {
+      const d1 = new Date(visit.entry)
+      const d2 = new Date(visit.exit)
+      const timeDiff = Math.abs(d2.getTime() - d1.getTime())
+      visit.days = (Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1)
+    }
   }
 
-  checkOverlap (stay) {
-    var entry = stay.entry
-    var exit = stay.exit
-
-    for (let i = 0; i < entry.length; i++) {
-      for (let j = 0; j < exit.length; j++) {
-        if (entry[i] === exit[j]) {
-          entry.splice(i, 1)
-          exit[j] = exit[i]
-          exit.splice(i, 1)
+  sortStays (stays) {
+    stays.map(function (stay) {
+      stay.entries.sort(function (a, b) {
+        if (a.entry < b.entry) {
+          return -1
         }
-      }
-    }
+        if (a.entry > b.entry) {
+          return 1
+        }
+        return 0
+      })
+      return stay
+    })
+
+    return stays
+  }
+
+  isFull (entry) {
+    return (entry.entry && entry.exit && entry.country)
   }
 
   handleAdditionClick (e) {
