@@ -10,29 +10,27 @@ class App extends React.Component {
     super(props)
     this.state = {
       countries: require('./countries.json'),
-      entries: [{
+      visits: [{
         entry: '',
         exit: '',
         country: '',
-        days: 0,
+        maxDays: 0,
         zone: ''
-      }],
-      schengen: require('./countries.json').filter(o =>
-        o.zone === 'Schengen').map(o => {
-          return o.name
-        }),
-      stays: []
+      }]
     }
   }
 
+// Handles a change in input fields
   handleChange (e) {
-    var entries = this.state.entries
+    var visits = this.state.visits
     const name = e.target.name
+// Strip out the table row and parameter from the input name
     const row = parseInt(name.substring(name.indexOf('-') + 1), 10)
     const parameter = name.substring(0, name.indexOf('-'))
 
-    entries[row][parameter] = e.target.value
+    visits[row][parameter] = e.target.value
 
+// When the country is updated, find the country's zone and maximum stay
     if (parameter === 'country') {
       const obj = this.state.countries.find((o) => {
         if (o.name === e.target.value) {
@@ -41,114 +39,43 @@ class App extends React.Component {
         return false
       })
 
-      entries[row].days = obj.length
-      entries[row].zone = obj.zone
+      visits[row].maxDays = obj.length
+      visits[row].zone = obj.zone
     }
 
     this.setState({
-      entries: entries
-    })
-
-    this.calculateStays()
-  }
-
-  calculateStays () {
-    var stays = []
-    const entries = this.state.entries
-
-    for (let entry of entries) {
-      if (this.isFull(entry)) {
-        const zone = this.state.schengen.includes(entry.country) ?
-          'Schengen' : entry.country
-        const existingStay = stays.filter(function (stay) {
-          return stay.zone === zone
-        })[0]
-
-        if (existingStay) {
-          existingStay.entries.push({
-            entry: entry.entry,
-            exit: entry.exit
-          })
-        } else {
-          stays.push({
-            zone: zone,
-            entries: [{
-              entry: entry.entry,
-              exit: entry.exit
-            }]
-          })
-        }
-      }
-    }
-
-    for (let stay of stays) {
-      this.calculateDays(stay)
-    }
-
-    stays = this.sortStays(stays)
-
-    this.setState({
-      stays: stays
+      visits: visits
     })
   }
 
-  calculateDays (stay) {
-    for (let visit of stay.entries) {
-      const d1 = new Date(visit.entry)
-      const d2 = new Date(visit.exit)
-      const timeDiff = Math.abs(d2.getTime() - d1.getTime())
-      visit.days = (Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1)
-    }
-  }
-
-  sortStays (stays) {
-    stays.map(function (stay) {
-      stay.entries.sort(function (a, b) {
-        if (a.entry < b.entry) {
-          return -1
-        }
-        if (a.entry > b.entry) {
-          return 1
-        }
-        return 0
-      })
-      return stay
-    })
-
-    return stays
-  }
-
-  isFull (entry) {
-    return (entry.entry && entry.exit && entry.country)
-  }
-
+// Handler to add a new row. Add a new blank entry to the visits array
   handleAdditionClick (e) {
-    var entries = this.state.entries
+    var visits = this.state.visits
 
-    entries.push({
+    visits.push({
       entry: '',
       exit: '',
       country: '',
-      days: 0
+      days: 0,
+      zone: ''
     })
 
     this.setState({
-      entries: entries
+      visits: visits
     })
   }
 
+// Handler to remove a row. Removes the relevant entry from the visits array
   handleRemovalClick (e) {
     const name = e.target.name
     const row = parseInt(name.substring(name.indexOf('-') + 1), 10)
-    var entries = this.state.entries
+    var visits = this.state.visits
 
-    entries.splice(row, 1)
+    visits.splice(row, 1)
 
     this.setState({
-      entries: entries
+      visits: visits
     })
-
-    this.calculateStays()
   }
 
   render () {
@@ -159,12 +86,12 @@ class App extends React.Component {
           onChange={(e) => this.handleChange(e)}
           onAdditionClick={(e) => this.handleAdditionClick(e)}
           onRemovalClick={(e) => this.handleRemovalClick(e)}
-          entries={this.state.entries}
+          visits={this.state.visits}
           countries={this.state.countries.map(e => e.name)}
         />
         <TravelAdvice
           countries={this.state.countries}
-          stays={this.state.stays} />
+          visits={this.state.visits} />
       </div>
     )
   }

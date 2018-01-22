@@ -17,15 +17,16 @@ export default class InputTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.entries.map((entry, index) => {
+            {this.props.visits.map((visit, index) => {
               const rowName = `row-${index}`
 
               return (
-                <TableRow key={rowName}
+                <TableRow
+                  key={rowName}
                   onChange={this.props.onChange}
                   onClick={this.props.onRemovalClick}
                   countries={this.props.countries}
-                  entry={entry}
+                  visit={visit}
                   index={index} />
               )
             })}

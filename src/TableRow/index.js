@@ -2,11 +2,13 @@ import React from 'react'
 import './index.css'
 
 export default class TableRow extends React.Component {
-  fullEntry (entry) {
-    return (entry.entry && entry.exit && entry.country)
+// Returns true if all three of entry, exit, and country have been entered
+  isFull (visit) {
+    return (visit.entry && visit.exit && visit.country)
   }
 
-  numDays (day1, day2) {
+// Calculates the difference in days between two dates
+  diffDays (day1, day2) {
     const d1 = new Date(day1)
     const d2 = new Date(day2)
 
@@ -16,7 +18,8 @@ export default class TableRow extends React.Component {
 
   render () {
     const index = this.props.index
-    const entry = this.props.entry
+    const visit = this.props.visit
+    const countries = this.props.countries
 
     const entryName = `entry-${index}`
     const exitName = `exit-${index}`
@@ -26,24 +29,33 @@ export default class TableRow extends React.Component {
     return (
       <tr>
         <td>
-          <input type="date" name={entryName}
-            value={entry.entry}
+          <input type="date"
+            name={entryName}
+            value={visit.entry}
             onChange={this.props.onChange} />
         </td>
         <td>
-          <input type="date" name={exitName}
-            value={entry.exit}
+          <input type="date"
+            name={exitName}
+            value={visit.exit}
             onChange={this.props.onChange} />
         </td>
         <td>
-          <select name={countryName}
-            value={entry.country ?
-              entry.country : 'Europe'}
+          <select
+            name={countryName}
+            value={visit.country ? visit.country : 'Europe'}
             onChange={this.props.onChange}>
-            <option value="Europe" disabled>Europe</option>
-            {this.props.countries.map(country => {
+
+            <option value="Europe" disabled>
+              Europe
+            </option>
+
+            {countries.map(country => {
               return (
-                <option value={country} key={country}>
+                <option
+                  value={country}
+                  key={country}>
+
                   {country}
                 </option>
               )
@@ -51,8 +63,8 @@ export default class TableRow extends React.Component {
           </select>
         </td>
         <td>
-          {this.fullEntry(entry) ?
-            `${this.numDays(entry.entry, entry.exit)} of ${entry.days}`
+          {this.isFull(visit) ?
+            `${this.diffDays(visit.entry, visit.exit)} of ${visit.maxDays}`
             : ''}
         </td>
         <td>
